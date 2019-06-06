@@ -10,10 +10,8 @@ import responses
 from django_factory_boy.auth import UserFactory
 
 from assopy.models import Invoice, Order, OrderItem
-from assopy.stripe.tests.factories import FareFactory, OrderFactory
 from conference.models import Ticket, Conference
 from conference.invoicing import create_invoices_for_order
-from conference.tests.factories.fare import TicketFactory
 from p3.models import TicketConference
 
 from email_template.models import Email
@@ -24,6 +22,7 @@ from conference.currencies import (
 )
 
 from tests.common_tools import make_user, setup_conference_with_typical_fares
+from tests.factories import FareFactory, OrderFactory, TicketFactory
 
 pytestmark = [pytest.mark.django_db]
 

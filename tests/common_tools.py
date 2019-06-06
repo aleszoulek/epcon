@@ -10,7 +10,7 @@ from django.core.cache import cache
 from django_factory_boy import auth as auth_factories
 
 from assopy.models import Vat
-from assopy.tests.factories.user import AssopyUserFactory
+from tests.factories import AssopyUserFactory
 from conference.models import AttendeeProfile, Conference
 from conference.fares import pre_create_typical_fares_for_conference
 

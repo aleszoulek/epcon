@@ -2,7 +2,7 @@ import pytest
 
 from django.conf import settings
 from tests.common_tools import template_used
-from conference.tests.factories.fare import SponsorFactory
+from tests.factories import SponsorFactory
 
 
 def test_get_homepage(db, client):

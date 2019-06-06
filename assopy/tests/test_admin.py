@@ -4,8 +4,7 @@ from pytest import mark
 from django.conf import settings
 from django.core.urlresolvers import reverse
 
-from assopy.stripe.tests import factories
-from conference.tests.factories.conference import ConferenceFactory
+from tests import factories
 
 
 @mark.django_db
@@ -66,7 +65,7 @@ def test_order_invoices_admin(admin_client):
 
 @mark.django_db
 def test_order_stats_admin(admin_client):
-    ConferenceFactory()
+    factories.ConferenceFactory()
     url = reverse('admin:assopy-order-stats')
 
     response = admin_client.get(url)

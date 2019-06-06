@@ -23,14 +23,11 @@ from conference.models import (
     Speaker,
     ExchangeRate,
 )
-from conference.tests.factories.fare import SponsorIncomeFactory, TicketFactory
-from conference.tests.factories.talk import TalkFactory
 from conference.cfp import add_speaker_to_talk
 from conference.accounts import get_or_create_attendee_profile_for_new_user
 from conference.fares import set_early_bird_fare_dates
 
-
-DEFAULT_VAT_RATE = "20"  # 20%
+from tests.factories import SponsorIncomeFactory, TicketFactory, TalkFactory, DEFAULT_VAT_RATE
 
 
 class Command(BaseCommand):

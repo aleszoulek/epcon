@@ -8,8 +8,7 @@ from django.utils import timezone
 
 from conference.models import Conference, VotoTalk, TALK_STATUS
 from conference.talk_voting import VotingOptions
-from conference.tests.factories.speaker import SpeakerFactory
-from conference.tests.factories.talk import TalkFactory, TalkSpeakerFactory
+from tests.factories import SpeakerFactory, TalkFactory, TalkSpeakerFactory
 
 pytestmark = [pytest.mark.django_db]
 

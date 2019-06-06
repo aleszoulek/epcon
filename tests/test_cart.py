@@ -8,7 +8,7 @@ from django.contrib.messages import constants as messages_constants
 from django.utils import timezone
 
 from assopy.models import Order
-from assopy.tests.factories.order import CouponFactory
+from tests.factories import CouponFactory
 from conference.cart import CartActions
 from conference.models import Ticket, Fare
 from conference.fares import (
