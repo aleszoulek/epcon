@@ -21,7 +21,7 @@ from conference.currencies import (
     fetch_and_store_latest_ecb_exrates,
 )
 
-from tests.common_tools import make_user, setup_conference_with_typical_fares
+from tests.common_tools import make_user, get_default_conference
 from tests.factories import FareFactory, OrderFactory, TicketFactory
 
 pytestmark = [pytest.mark.django_db]
@@ -151,7 +151,7 @@ def test_user_panel_update_ticket(client):
 
 
 def test_assigning_tickets_uses_case_insensitive_email_address(db, user_client):
-    setup_conference_with_typical_fares()
+    get_default_conference()
     ticket = TicketFactory(user=user_client.user)
     target_email = 'MiXeDc4sE@test.tESt'
     target_user = UserFactory(email=target_email.lower())
@@ -166,7 +166,7 @@ def test_assigning_tickets_uses_case_insensitive_email_address(db, user_client):
 
 
 def test_assigning_ticket_to_inactive_user_displays_error(db, user_client):
-    setup_conference_with_typical_fares()
+    get_default_conference()
     ticket = TicketFactory(user=user_client.user)
     target_user = UserFactory(is_active=False)
     target_email = target_user.email

@@ -16,7 +16,6 @@ from djangocms_text_ckeditor.cms_plugins import TextPlugin
 from assopy.models import AssopyUser, Country, Vat
 from conference.fares import pre_create_typical_fares_for_conference
 from conference.models import (
-    Conference,
     ConferenceTag,
     News,
     TALK_STATUS,
@@ -27,6 +26,7 @@ from conference.cfp import add_speaker_to_talk
 from conference.accounts import get_or_create_attendee_profile_for_new_user
 from conference.fares import set_early_bird_fare_dates
 
+from tests.common_tools import get_default_conference
 from tests.factories import SponsorIncomeFactory, TicketFactory, TalkFactory, DEFAULT_VAT_RATE
 
 
@@ -38,18 +38,7 @@ class Command(BaseCommand):
 
     @transaction.atomic
     def handle(self, *args, **options):
-        conference, _ = Conference.objects.get_or_create(
-            code=settings.CONFERENCE_CONFERENCE,
-            name="Europython 2019",
-            # For easier testing open CFP
-            cfp_start=timezone.now() - timedelta(days=3),
-            cfp_end=timezone.now() + timedelta(days=3),
-            conference_start=date(2019, 7, 8),
-            conference_end=date(2019, 7, 14),
-            # For easier testing also start with open voting
-            voting_start=timezone.now() - timedelta(days=3),
-            voting_end=timezone.now() + timedelta(days=3),
-        )
+        conference = get_default_conference()
         ExchangeRate.objects.create(
             datestamp=date.today(), currency="CHF", rate="1.0"
         )
